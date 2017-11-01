@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
+
 /**
  * Created by rioswarawan on 10/31/17.
  */
@@ -21,7 +23,7 @@ public class CacheManager {
         this.preferenceName = "Global-Cache";
     }
 
-    public synchronized <T> T read(String key, Class<T> tClass) {
+    public synchronized <T> T get(String key, Class<T> tClass) {
         Object object = null;
         if (tClass == String.class)
             object = preferences.getString(key, "");
@@ -36,7 +38,7 @@ public class CacheManager {
         return tClass.cast(object);
     }
 
-    public synchronized <T> void write(String key, T value, Class<T> tClass) {
+    public synchronized <T> void save(String key, T value, Class<T> tClass) {
         SharedPreferences.Editor editor = preferences.edit();
         if (tClass == String.class)
             editor.putString(key, (String) value);
