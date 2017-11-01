@@ -19,14 +19,44 @@ public class CacheManager {
         this.preferenceName = "Global-Cache";
     }
 
-    public void save(String key, String value) {
+    public void saveString(String key, String value) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(key, value);
         editor.apply();
     }
 
-    public String get(String key) {
+    public void saveInt(String key, Integer value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(key, value);
+        editor.apply();
+    }
+
+    public void saveBoolean(String key, Boolean value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    public void saveFloat(String key, Float value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putFloat(key, value);
+        editor.apply();
+    }
+
+    public String getString(String key) {
         return preferences.getString(key, "");
+    }
+
+    public Integer getInt(String key) {
+        return preferences.getInt(key, 0);
+    }
+
+    public Boolean get(String key) {
+        return preferences.getBoolean(key, false);
+    }
+
+    public Float getFloat(String key) {
+        return preferences.getFloat(key, 0);
     }
 
     public void clear() {

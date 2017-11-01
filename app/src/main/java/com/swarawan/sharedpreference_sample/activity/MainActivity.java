@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                cache.save(key, value);
+                cache.saveString(key, value);
                 printLog(key);
                 clearForm();
             }
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void printLog(String key) {
-        String storedValue = cache.get(key);
+        String storedValue = cache.getString(key);
 
         Log.d("Sample-SharedPreference", "key: " + key);
         Log.d("Sample-SharedPreference", "value: " + storedValue);
